@@ -7,4 +7,5 @@ This is mostly for colour scheme integration.
 
 ## Installation
 
-Run the `install.fish` script in the base of the repo.
+Install [`caelestia-scripts`](https://github.com/caelestia-dots/scripts.git),
+then run `caelestia install foot`.
