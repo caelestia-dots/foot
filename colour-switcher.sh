@@ -1,6 +1,6 @@
 #!/bin/bash
 
-scheme_path="${XDG_CACHE_HOME:-$HOME/.cache}/caelestia/scheme/current.txt"
+scheme_path="${XDG_STATE_HOME:-$HOME/.local/state}/caelestia/scheme/current.txt"
 schemes="$(dirname "$0")/schemes"
 config_path="$schemes/current.ini"
 
