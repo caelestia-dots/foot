@@ -40,4 +40,4 @@ inotifywait -q -e 'close_write,moved_to,create' -m "$(dirname "$scheme_path")" |
     fi
 done &
 
-exec fish
+exec fish "$@"
