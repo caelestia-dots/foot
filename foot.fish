@@ -7,4 +7,4 @@ if test -n "$idx"
 else
     set cmd $argv
 end
-foot $foot_args (dirname (realpath (status filename)))/colour-switcher.sh -c "$cmd"
+foot $foot_args -- (dirname (realpath (status filename)))/colour-switcher.sh -c "$cmd"
