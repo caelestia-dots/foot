@@ -2,9 +2,12 @@
 
 set -l idx (contains -i -- -- $argv)
 if test -n "$idx"
-    set foot_args $argv[..(math $idx - 1)]
-    set cmd $argv[(math $idx + 1)..]
+    # Exec colour switcher if has -- arg
+    test $idx -gt 1 && set -l foot_args $argv[..(math $idx - 1)]
+    set -l cmd $argv[(math $idx + 1)..]
+
+    /bin/foot $foot_args -- (dirname (realpath (status filename)))/colour-switcher.sh -c "$cmd"
 else
-    set cmd $argv
+    # Normal execution
+    /bin/foot $argv
 end
-foot $foot_args -- (dirname (realpath (status filename)))/colour-switcher.sh -c "$cmd"
