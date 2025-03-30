@@ -20,6 +20,11 @@ update() {
             fi
             echo -ne "\e]4;$idx;rgb:$r/$g/$b\e\\"
         done
+    # ex: 'custom0=0b0b0b'
+    sed -n -r 's/^\w*custom([0-9])=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3 \4 \5/p' "$config_path" |
+        while read color_type idx r g b; do
+            echo -ne "\e]4;$((idx + 16));rgb:$r/$g/$b\e\\"
+        done
     # ex: 'foreground=ffffff'
     sed -n -r 's/^\w*foreground=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3/p' "$config_path" |
         while read r g b; do
