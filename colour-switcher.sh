@@ -35,6 +35,16 @@ update() {
         while read r g b; do
             echo -ne "\x1b]11;rgb:$r/$g/$b\x1b\\"
         done
+    # ex: 'cursor=0b0b0b'
+    sed -n -r 's/^\w*cursor=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3/p' "$config_path" |
+        while read r g b; do
+            echo -ne "\x1b]12;rgb:$r/$g/$b\x1b\\"
+        done
+	# ex: 'selection=0b0b0b'
+    sed -n -r 's/^\w*selection=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3/p' "$config_path" |
+        while read r g b a; do
+            echo -ne "\x1b]17;rgb:$r/$g/$b\x1b\\"
+        done
 }
 
 update
