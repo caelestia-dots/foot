@@ -18,22 +18,22 @@ update() {
             if [ "$color_type" = 'bright' ]; then
                 idx="$((idx + 8))"
             fi
-            echo -ne "\e]4;$idx;rgb:$r/$g/$b\e\\"
+            echo -ne "\x1b]4;$idx;rgb:$r/$g/$b\x1b\\"
         done
     # ex: 'custom0=0b0b0b'
     sed -n -r 's/^\w*custom([0-9])=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3 \4/p' "$config_path" |
         while read idx r g b; do
-            echo -ne "\e]4;$((idx + 16));rgb:$r/$g/$b\e\\"
+            echo -ne "\x1b]4;$((idx + 16));rgb:$r/$g/$b\x1b\\"
         done
     # ex: 'foreground=ffffff'
     sed -n -r 's/^\w*foreground=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3/p' "$config_path" |
         while read r g b; do
-            echo -ne "\e]10;rgb:$r/$g/$b\e\\"
+            echo -ne "\x1b]10;rgb:$r/$g/$b\x1b\\"
         done
     # ex: 'background=0b0b0b'
     sed -n -r 's/^\w*background=([0-9a-fA-F]{2})([0-9a-fA-F]{2})([0-9a-fA-F]{2}).*/\1 \2 \3/p' "$config_path" |
         while read r g b; do
-            echo -ne "\e]11;rgb:$r/$g/$b\e\\"
+            echo -ne "\x1b]11;rgb:$r/$g/$b\x1b\\"
         done
 }
 
