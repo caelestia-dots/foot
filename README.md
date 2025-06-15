@@ -1,5 +1,7 @@
 # caelestia-foot
 
+## THIS REPO IS ARCHIVED IN FAVOUR OF https://github.com/caelestia-dots/caelestia
+
 ![showcase](https://github.com/caelestia-dots/readme/blob/main/foot/showcase.gif)
 
 Foot config for my caelestia dotfiles.
